@@ -1,4 +1,7 @@
-# openshift-automysqlbackup [![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own commit badge on microbadger.com")
+# openshift-automysqlbackup
+[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own commit badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own commit badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own commit badge on microbadger.com")
 
 <a href='https://ko-fi.com/A417UXC'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
@@ -58,7 +61,7 @@ docker run --network dbtest \
     -e USERNAME=root \
     -e PASSWORD=my-secret-pw \
     -e DBNAMES=all \
-    automysqlbackup
+    jorgeandrada/openshift-automysqlbackup:alpine
 ```
 
 Container will create dumps of all datebases from MySQL inside `/var/lib/automysqlbackup` directory and exit.
@@ -73,7 +76,7 @@ docker run --network dbtest \
     -e PASSWORD=my-secret-pw \
     -e DBNAMES=all \
     -e CRON_SCHEDULE="0 0 * * *" \
-    automysqlbackup
+    jorgeandrada/openshift-automysqlbackup:alpine
 ```
 
 Instead of passing environment variables though docker, you can also mount a file with their declarations
@@ -82,7 +85,7 @@ as volume. See `defaults` file in this image's git repository for the example.
 docker run --network dbtest \
     -v '/var/lib/automysqlbackup:/backup' \
     -v '/etc/default/automysqlbackup:/etc/default/automysqlbackup:ro' \
-    automysqlbackup
+    jorgeandrada/openshift-automysqlbackup:alpine
 ```
 
 # Usage with docker-compose
