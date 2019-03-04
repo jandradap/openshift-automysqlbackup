@@ -6,7 +6,7 @@ WORKDIR /go/src/github.com/odise/go-cron
 RUN CGO_ENABLED=0 GOOS=linux go build -o go-cron bin/go-cron.go
 
 # Package
-FROM alpine:3.6
+FROM debian:stretch-slim
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -23,16 +23,35 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
   maintainer="Jorge Andrada Prieto <jandradap@gmail.com>" \
   org.label-schema.docker.cmd=""
 
-RUN apk add --no-cache mysql-client
+RUN apt-get update && apt-get install -y --no-install-recommends gnupg dirmngr bzip2 && rm -rf /var/lib/apt/lists/*
+
+RUN set -uex; \
+# gpg: key 5072E1F5: public key "MySQL Release Engineering <mysql-build@oss.oracle.com>" imported
+	key='A4A9406876FCBD3C456770C88C718D3B5072E1F5'; \
+	export GNUPGHOME="$(mktemp -d)"; \
+	gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys "$key"; \
+	gpg --export "$key" > /etc/apt/trusted.gpg.d/mysql.gpg; \
+	gpgconf --kill all; \
+	rm -rf "$GNUPGHOME"; \
+	apt-key list > /dev/null
+
+ENV MYSQL_MAJOR 8.0
+ENV MYSQL_VERSION 8.0.13-1debian9
+
+RUN echo "deb http://repo.mysql.com/apt/debian/ stretch mysql-${MYSQL_MAJOR}" > /etc/apt/sources.list.d/mysql.list
+
+RUN apt-get update \
+    && apt-get install -y mysql-community-client-core="${MYSQL_VERSION}" \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /etc/default /etc/mysql
 
 COPY --from=builder /go/src/github.com/odise/go-cron/go-cron /usr/local/bin
 COPY rootfs/start.sh /usr/local/bin
 COPY rootfs/automysqlbackup /usr/local/bin
+COPY rootfs/my.cnf /etc/mysql
 
 RUN chmod +x /usr/local/bin/go-cron /usr/local/bin/automysqlbackup /usr/local/bin/start.sh
-
-RUN mkdir -p /etc/default /backup \
-  && chmod -R a+rwx /backup
 
 WORKDIR /backup
 
@@ -56,7 +75,5 @@ ENV USERNAME=           \
     POSTBACKUP=         \
     ROUTINES=yes        \
     CRON_SCHEDULE=
-
-USER 1001
 
 CMD ["start.sh"]
