@@ -1,6 +1,13 @@
 # Build
 FROM golang:1.9 as builder
 
+RUN go get -d -v github.com/odise/go-cron
+WORKDIR /go/src/github.com/odise/go-cron
+RUN CGO_ENABLED=0 GOOS=linux go build -o go-cron bin/go-cron.go
+
+# Package
+FROM alpine:3.6
+
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
@@ -15,13 +22,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.schema-version="1.0" \
   maintainer="Jorge Andrada Prieto <jandradap@gmail.com>" \
   org.label-schema.docker.cmd=""
-
-RUN go get -d -v github.com/odise/go-cron
-WORKDIR /go/src/github.com/odise/go-cron
-RUN CGO_ENABLED=0 GOOS=linux go build -o go-cron bin/go-cron.go
-
-# Package
-FROM alpine:3.6
 
 RUN apk add --no-cache mysql-client
 
