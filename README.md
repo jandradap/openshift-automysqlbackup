@@ -1,7 +1,5 @@
 # openshift-automysqlbackup
-[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own commit badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own commit badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own commit badge on microbadger.com")
+
 
 <a href='https://ko-fi.com/A417UXC'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
@@ -11,12 +9,13 @@ Runs a slightly modified [AutoMySQLBackup](https://sourceforge.net/projects/auto
 
 [Forked from](https://github.com/selim13) and modify for Openshift (non-container root).
 
+## Tags
 
-## Supported tags and respective `Dockerfile` links
-
-- [`latest` (*Dockerfile*)](https://github.com/selim13/docker-automysqlbackup/blob/master/Dockerfile)
-- [`2.6-1-debian` (*Dockerfile*)](https://github.com/selim13/docker-automysqlbackup/blob/2.6-1-debian/Dockerfile)
-- [`2.6-1-alpine` (*Dockerfile*)](https://github.com/selim13/docker-automysqlbackup/blob/2.6-1-alpine/Dockerfile) without MySQL 8 support
+|Tag|Info|Badges|
+|---|---|---|
+|**latest:**|alpine version| [![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:latest.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:latest "Get your own commit badge on microbadger.com")|
+|**develop:**|alpine version|[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:alpine.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:alpine "Get your own commit badge on microbadger.com")|
+|**alpine:**|without MySQL 8 support|[![](https://images.microbadger.com/badges/image/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/commit/jorgeandrada/openshift-automysqlbackup:develop.svg)](https://microbadger.com/images/jorgeandrada/openshift-automysqlbackup:develop "Get your own commit badge on microbadger.com")|
 
 ## Version
 
