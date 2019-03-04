@@ -21,7 +21,7 @@ WORKDIR /go/src/github.com/odise/go-cron
 RUN CGO_ENABLED=0 GOOS=linux go build -o go-cron bin/go-cron.go
 
 # Package
-FROM alpine:3.6
+FROM alpine:3.9
 
 RUN apk add --no-cache mysql-client
 
