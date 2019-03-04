@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# $IMAGE_NAME var is injected into the build so the tag is correct.
+
+VERSIONPHP=$(cat Dockerfile | grep "ENV PHP_VERSION" | awk -F " " {'print$3'})
+
+docker build --build-arg VCS_REF=$(git rev-parse --short HEAD) \
+  --build-arg BUILD_DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
+  --build-arg VERSION="$VERSIONPHP" \
+  -t "$IMAGE_NAME" .
