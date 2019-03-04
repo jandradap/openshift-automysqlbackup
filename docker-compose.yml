@@ -1,0 +1,25 @@
+version: "2"
+
+volumes:
+  mysql-data: {}
+  mysql-backups-data: {}
+
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - "mysql-data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "my-secret-pw"
+
+  mysqlbackup:
+    image: selim13/automysqlbackup
+    volumes:
+      - "mysql-backups-data:/backup"
+    environment:
+      USERNAME: root
+      PASSWORD: "my-secret-pw"
+      DBHOST: mysql
+      CRON_SCHEDULE: "0 0 * * *"
+    depends_on:
+      - mysql
