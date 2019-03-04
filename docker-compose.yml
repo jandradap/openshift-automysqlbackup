@@ -13,7 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: "my-secret-pw"
 
   mysqlbackup:
-    image: selim13/automysqlbackup
+    image: jorgeandrada/openshift-automysqlbackup:alpin
     volumes:
       - "mysql-backups-data:/backup"
     environment:
